@@ -19,8 +19,8 @@ import { RouteViewerInterface } from './map-viewer-type';
 
 const MapViewer = (props: RouteViewerInterface) => {
   const {
-    width = 400,
-    height = 300,
+    width = 1080,
+    height = 720,
   } = props;
 
   const ref_map = useRef<OlMap | null>(null);
