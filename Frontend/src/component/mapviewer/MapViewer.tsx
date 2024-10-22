@@ -90,7 +90,10 @@ const MapViewer = (props: RouteViewerInterface) => {
   }
 
   return (
-    <div id="route_viewer" style={{width: width, height: height}}/>
+    <>
+      <div id="route_viewer" style={{width: width, height: height}}/>
+    </>
+    
   )
 };
 
