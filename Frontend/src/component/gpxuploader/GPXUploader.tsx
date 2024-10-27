@@ -1,14 +1,11 @@
 import { useCallback, useState } from "react";
+
 import { useDropzone } from "react-dropzone";
 import { Typography } from "@mui/material";
 import * as togeojson from "@tmcw/togeojson";
 import { DOMParser } from "xmldom";
 
-// GeoJSON 타입을 지정 (필요한 속성만 포함할 수 있음)
-interface GeoJSON {
-  type: string;
-  features: unknown[];
-}
+import { GeoJSON } from "./geojson";
 
 const GPXUploader = () => {
   const [gpxData, setGpxData] = useState<GeoJSON | null>(null);
