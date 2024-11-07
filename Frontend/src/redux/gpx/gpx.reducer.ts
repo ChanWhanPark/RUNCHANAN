@@ -18,13 +18,14 @@ export const gpxReducer = createSlice({
   initialState,
   reducers: {
     valueUpdate: (state, action: PayloadAction<GeoJSON>) => {
+      console.log(state, action);
       state.value.type = action.payload.type;
       state.value.features = action.payload.features;
     },
   },
 });
 
-export const { valueUpdate } = gpxReducer.actions;
+export const gpxActions = gpxReducer.actions;
 
 export const gpxUpdate = (state: RootState) => state.gpx;
 

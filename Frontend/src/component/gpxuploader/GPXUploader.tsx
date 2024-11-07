@@ -6,10 +6,14 @@ import * as togeojson from "@tmcw/togeojson";
 import { DOMParser } from "xmldom";
 
 import { GeoJSON } from "./geojson";
+import { useAppDispatch } from "../../redux/hooks";
+import { gpxActions } from "../../redux/gpx/gpx.reducer";
 
 const GPXUploader = () => {
-  const [gpxData, setGpxData] = useState<GeoJSON | null>(null);
+  const [gpxData, setGpxData] = useState<GeoJSON>();
   const [error, setError] = useState<string | null>(null);
+
+  const dispatch = useAppDispatch();
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     const file = acceptedFiles[0];
@@ -21,6 +25,7 @@ const GPXUploader = () => {
         const parser = new DOMParser();
         const xml = parser.parseFromString(text, "application/xml");
         const geoJSON = togeojson.gpx(xml) as GeoJSON;
+        dispatch(gpxActions.valueUpdate(geoJSON));
         setGpxData(geoJSON);
       } catch (err) {
         setError(`Error : ${err}`);
